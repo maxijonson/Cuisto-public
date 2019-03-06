@@ -1,0 +1,26 @@
+#logo {
+    width: 100%;
+    height: 80vh;
+    margin-bottom: 5%;
+    position: relative;
+    background-image: url("/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    text-indent: 0;
+    cursor: pointer;
+    border: none;
+    transition: all .25s;
+    background-color: #dbdbdb;  
+}
+.carousel-indicators .active {
+    background-color: #686868;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    filter: drop-shadow(black 0 0 0.2em);
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cuisto - Réinitialisation du mot de passe</title>
+    <meta charset='utf-8' name="viewport" content="width-device-width, initial-scale=1">
+
+    {{!-- css --}}
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    {{!-- add your css' link --}}
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    {{!-- js --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/modules/jquery-validation/dist/jquery.validate.js"></script>
+    {{!-- add your javascript link --}}
+    <script src="/js/forgot/forgot.js"></script>
+</head>
+
+<body>
+
+    {{!-- navigation --}}
+    {{> navbar}}
+
+    <div class="container card shadow" style="margin-top: 1%; margin-bottom: 1%">
+        <div class="card-body">
+            <h1 class="card-title">Réinitialisation du mot de passe</h1>
+            <h5>{{u.username}}</h5>
+            <form id="formNewPassword">
+                <div class="form-group">
+                    <label for="password">Nouveau Mot de passe</label>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    <small></small>
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirmation</label>
+                    <input name="confirm" type="password" class="form-control" id="confirm" placeholder="Confirmer le mot de passe">
+                    <small></small>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirmer</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        {{> footer}}
+    </footer>
+</body>
+
+</html>

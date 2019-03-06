@@ -1,0 +1,8 @@
+textarea {
+    min-height: 2.5em;
+    max-height: 7.0em;
+}
+td .input-group {
+    float: right;
+    width: 20em;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{user.nom}} - Restaurants</title>
+    <meta charset='utf-8' name="viewport" content="width-device-width, initial-scale=1">
+    {{!-- css --}}
+    <link rel="stylesheet" type="text/css" href="../../css/Restaurant/list.css">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    {{!-- add your css' link --}}
+    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    {{!-- js --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    {{!-- add your javascript link --}}
+    <script src="../js/Restaurant/listRestaurant.js"></script>
+</head>
+
+<body>
+    <div class="content">
+                    {{!-- navigation --}}
+            {{> navbar}}
+        <div class="container-fluid">
+            <div class="container-fluid p-4">
+                {{!-- real page container --}}
+                <div class="row">
+                    <div class="col-12" id="listHead">
+                        <span class="h1">Liste des restaurants</span>
+                        <button type="button" class="btn btn-secondary" style="float: right; margin: 0 1%" id="listePostes">Voir
+                            les postes</button>
+                        <button type="button" class="btn btn-secondary" style="float: right" id="ajouterResto">Ajouter
+                            un restaurant</button>
+                    </div>
+                </div>
+                <div class="row" id="restaurants">
+                    {{#each restaurants}}
+                    <div class="col-4 restoContainer hidden">
+                        <div class="card mb-3 mt-3 restaurant" restaurantid="{{id}}">
+                            <h4 class="card-title card-header text-white text-center">{{nom}}</h4>
+                            <div class="card-body">
+                                <h6 class="text-secondary">Adresse</h6>
+                                <p class="address">{{adresse}}, {{ville}}, {{codepostal}}</p>
+                                <h6 class="text-secondary">Téléphone</h6>
+                                <p class="phone">{{telephone}}</p>
+                                <h6 class="text-secondary">Courriel</h6>
+                                <p class="email">{{courriel}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div id="actions" class="hidden bg-light">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-2 text-center">
+                            <button id="manage" class="btn btn-primary">Gérer</button>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button id="edit" class="btn btn-primary">Modifier</button>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button id="delete" class="btn btn-danger">Supprimer</button>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- MODALS --}}
+        {{! Edit }}
+        <div class="modal fade" id="modalAction" tabindex="-1" role="dialog" aria-labelledby="modalActionLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalActionLabel"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formActionRestaurant" action="javascript:void(0)">
+                            <div class="form-group">
+                                <label for="nom">Nom: </label>
+                                <input type="text" class="form-control" id="name" name="nom">
+                                <small class="form-text"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="ville">Ville: </label>
+                                <input type="text" class="form-control" id="ville" name="ville">
+                                <small class="form-text"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="adresse">Adresse: </label>
+                                <input type="text" class="form-control" id="adresse" name="adresse">
+                                <small class="form-text"></small>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="codepostal">Code Postal: </label>
+                                    <input type="text" class="form-control" id="codepostal" name="codepostal">
+                                    <small class="form-text"></small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="telephone">Téléphone: </label>
+                                    <input type="text" class="form-control" id="telephone" name="telephone">
+                                    <small class="form-text"></small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="courriel">Courriel: </label>
+                                <input type="text" class="form-control" id="courriel" name="courriel">
+                                <small class="form-text"></small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="formActionRestaurant" class="btn btn-primary" id="btnActionRestaurant">Action</button>
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal" id="btnCancel">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{! Delete }}
+        <div class="modal fade" id="modalSupprimer" tabindex="-1" role="dialog" aria-labelledby="modalSupprimerLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalSupprimerLabel"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="btnDeleteRestaurant">Supprimer</button>
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> footer}}
+</body>
+
+</html>

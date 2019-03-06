@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modifier l'inventaire</title>
+    {{!-- add your CSS link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Inventaire/inventaire.css">
+
+    {{!-- add your javascript link --}}
+    <script src="/js/Inventaire/inventaire.js"></script>
+    <script src="/js/Inventaire/modify.js"></script>
+</head>
+
+<body>
+    <table id="inventaire" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="3" style="overflow: hidden;">
+                    <h3 style="float: left; margin-right: 10px;">Modifier l'inventaire</h3>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">Nom</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data.articles}}
+            <tr id="{{id}}" class="inventaireModifier active">
+                <td>{{nom}}</td>
+                <td>{{typeArticle}}</td>
+                <td> <input class="input-quantite" type="number" id="nouvelleQuantite" value="{{quantite}}" min="0" maxlength="4"> &nbsp; {{unite}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <div style="width: 100%;">
+                        <button id="BtnAccepter" class="btn btn-primary">Modifier l'inventaire</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+
+</html>
+<!--  -->

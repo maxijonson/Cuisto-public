@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Articles de {{fournisseur.nom}}</title>
+    {{!-- add your CSS link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Fournisseurs/fournisseurs.css">
+
+    {{!-- add your javascript link --}}
+    <script src="/js/Fournisseur/fournisseurarticle.js"></script>
+</head>
+
+<body>
+    <table id="fournisseurArticle" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="3" style="overflow: hidden;">
+                    <h3 id="fournisseur" style="float: left; margin-right: 10px;" id_fournisseur="{{fournisseur.id}}">Liste des produits de {{fournisseur.nom}}</h3>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">Article</th>
+                <th class="text-center">Prix unitaire</th>
+                <th class="text-center">Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each fournisseur.Articles}}
+            <tr id="{{id}}" class="fournisseurArticle active">
+                <td id="nom">{{nom}}</td>
+                <td><input class="input-prix" type="number" step="0.01" min="0" value="{{ListeFournisseur.prix}}"> $</td>
+                <td id="unite">{{unite}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <div style="width: 100%;">
+                        <button id="btnAjouterArticle" class="btn btn-primary">Ajouter</button>
+                        <button id="btnModifierListe" class="btn btn-primary">Modifier les prix</button>
+                        <button id="btnRetourFournisseur" class="btn btn-secondary">Retour</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+<div class="modal fade" id="articleModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="titreDialog">Ajouter un article</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="formArticle" style="text-align:left">
+                    <div class="form-group">
+                        <label for="nom">Nom:</label>
+                        <input type="text" class="form-control" value="{{data.nom}}" id="nomModal" name="nom">
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantite">Quantité:</label>
+                        <input type="number" class="form-control" value="{{data.quantite}}" id="quantiteModal" name="quantite">
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="unite">Unité:</label>
+                        <input class="form-control" list="uniteArticleList" id="uniteModal" value="{{data.unite}}" name="unite">
+                        <small class="form-text"></small>
+                        <datalist id="uniteArticleList">
+                            {{#each unites}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <input class="form-control" list="typeArticleList" id="typeModal" value="{{data.typeArticle}}"
+                            name="typeArticle">
+                        <small class="form-text"></small>
+                        <datalist id="typeArticleList">
+                            {{#each types}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="prix">Prix unitaire:</label>
+                        <input type="number" step="0.01" class="form-control" id="prix">
+                    </div>
+                    <input type="hidden" id="articleId">
+                    <button type="submit" class="btn btn-primary" id="confirmer" value="Ajouter">Ajouter</button>
+                    <button type="button" class="btn btn-cancel" id="btnRetour" data-dismiss="modal">Annuler</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,17 @@
+.employe:hover{
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+#modalVoirInfo table {
+    table-layout: fixed;
+}
+
+td .input-group {
+    float: right;
+    width: 20em;
+}
+
+small label {
+    color: red !important;
+}

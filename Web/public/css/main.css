@@ -1,0 +1,435 @@
+@keyframes animateAlert {
+    0%, 100% {
+        z-index: 5;
+        visibility: hidden;
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    16%, 83% {
+        visibility: visible;
+        transform: translateY(133%);
+        opacity: 1;
+    }
+}
+
+@keyframes animateArrow {
+    0% {
+        transform: translateX(0)
+    }
+
+    50% {
+        transform: translateX(100%)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+th {
+    font-weight: bold;
+}
+
+#navbar {
+    z-index: 10;
+}
+
+#navbar li:not(:last-child) {
+    padding-right: .75rem;
+    margin-right: .75rem;
+    border-right: .05em solid #999999;
+}
+
+.div-navbar-Cuisto {
+    color: white;
+    padding : 10px 20px;
+    text-align: left;
+}
+
+.div-navbar-menu {
+    color: white;
+    padding-top : 0 20px;
+    text-align: center;
+}
+
+.div-navbar-menu > div {
+    float:right;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.div-navbar-menu > div:hover {
+    color: #636261;
+}
+
+.div-mainmenu-maindiv {
+    float:left;
+    height: 100%;
+    width: 100%;
+    margin-top: 15px;
+    padding: 0;
+}
+
+.div-main-menu-submenu {
+    position: relative;
+    display:inline-block;
+    width:100%;
+}
+
+.div-mainmenu-dropdownlist {
+    display: none;
+    position: relative;
+    background-color: white;
+    margin-left: 0;
+    width: 100%;
+}
+
+.div-mainmenu-dropdownlist:hover {
+    background-color: lightskyblue;
+}
+
+.div-main-menu-submenu:hover .div-mainmenu-dropdownlist {
+    display: block;
+    overflow: auto;
+}
+
+.div-mainmenu-maindiv > div {
+    background-color: #4d91d4;
+    color: white; 
+    border-bottom: solid white 3px;
+    text-align: left;
+    padding: 15px 15px;
+}
+
+.div-mainmenu-maindiv :hover {
+    background-color: lightskyblue;
+}
+/********************************/
+#sidebar {
+    min-width: 150px;
+    width: 100%;
+}
+
+#sidebar > ul > li {
+    transition: all .3s;
+}
+
+#sidebar li.hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar ul p {
+    padding: 10px;
+}
+
+/* MENU */
+#sidebar ul > li > a {
+    padding: 4.5%;
+    font-size: 1.1em;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1.5%;
+    border-bottom: none;
+    box-shadow: 0 0 .2em rgb(153, 153, 153);
+    color: white;
+    background: #4d91d4;
+}
+
+/* MENU:hover */
+#sidebar ul li a:hover {
+    /* background: rgb(231, 231, 231); */
+    background: #447fba;
+}
+
+/* SUBMENU */
+#sidebar ul ul a {
+    font-size: 0.8em !important;
+    text-align: center;
+    color: black;
+    /* background: #0eb4eb; */
+    background: #f8f9fa;
+    margin-bottom: 1.5%;
+    font-weight: 500;
+    text-decoration: none !important;
+    box-shadow: none;
+}
+
+/* SUBMENU:hover */
+#sidebar ul ul a:hover {
+    /* background: #0ca2d4; */
+    background: rgb(231, 231, 231);
+}
+
+
+#bootstrapAlert {
+    z-index: 1051;
+    opacity: 0;
+    transform: translateY(0);
+    transition: all .5s;
+    width: 100%;
+    animation: animateAlert 6s ease;
+    visibility: hidden;
+}
+
+#alert_placeholder {
+    top: 0;
+    transform: translateY(-100%);
+    position: fixed;
+    width: 100%;
+    z-index: 1051;
+
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    border-bottom: 0;
+}
+
+.navOption:hover {
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    border-bottom: 3px solid white;
+    color: white;
+    text-decoration: none !important;
+}
+
+#logout:hover {
+    cursor: pointer;
+}
+
+/*ADDED BY VICKIE*/
+label
+{
+  margin-bottom: 2px !important; /* because bootstrap */
+  
+}
+select
+{
+    height:28px;
+    vertical-align: middle;
+}
+.nav-principal li
+{
+    position:           relative;
+    display:            inline-block;
+    vertical-align:     middle;
+    padding-left:10px;
+    padding-right: 10px;
+}
+.container-fluid
+{
+    padding-left:0px !important;
+    padding-right: 0px !important;
+}
+.restaurantFrom /* for the restaurant from select tag */
+{
+  margin-left: 5px;
+  width: 100%; /* really important, it will take the longest width of the select element */
+}
+.buttonsDiv
+{
+  width: 100%;
+}
+.floatRight
+{
+  float: right;
+}
+
+#new tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.02);
+}
+
+.selectable {
+    transition: all .25s;
+}
+
+.selectAction {
+    transition: all .25s !important;
+}
+
+.selected:not(.restaurant):not(.poste) {
+    background-color: #5eaeff !important;
+    color: white;
+}
+
+.selected:not(.restaurant):not(.poste):hover {
+    background-color: #5391ce !important;
+    color: white;
+}
+
+.selectable:hover {
+    background-color: #d7d7d7 !important;
+    cursor: pointer;
+}
+
+.floatRight {
+    float:right;
+}
+
+small label {
+    color: red !important;
+}
+
+.mainRemoveMarginRight{
+    margin-right: 0 !important;
+}
+
+table {
+    box-shadow: 1em 2em black,
+}
+
+#panelDefault {
+    transition: all .5s;
+}
+
+#panelDefaultArrow {
+    display: inline-block;
+    animation: animateArrow 2s ease-in infinite;
+}
+
+#panelDefault.hidden {
+    opacity: 0;
+}
+
+#current, #new {
+    width: 100%;
+}
+
+#panel {
+    transition: all .25s;
+}
+
+#current {
+    transition: all .5s;
+}
+
+#current {
+    position: absolute;
+}
+
+#new {
+    position: relative;
+}
+
+#current.out {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.onoffswitch {
+    position: relative; width: 55px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 24px; padding: 0; line-height: 24px;
+    border: 2px solid #999999; border-radius: 24px;
+    background-color: #EEEEEE;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 24px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 29px;
+    border: 2px solid #999999; border-radius: 24px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #0EB4EB;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #0EB4EB;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px; 
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 .4em .4em 0;
+    display: inline-block;
+    padding: .5em;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.arrow[cuisto-disabled="false"]:hover {
+    filter: drop-shadow(0 0 .2em grey);
+}
+
+.arrow[cuisto-disabled="true"] {
+    border: solid transparent;
+    border-width: 0 .4em .4em 0;
+    cursor: default;
+}
+
+.arrow.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.arrow.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.historyActionName {
+    transition: all .5s;
+}
+
+.historyActionName.hidden {
+    opacity: 0;
+}
+
+#historyName {
+    cursor: default;
+    user-select: none;
+}
+
+.btn-cancel {
+    background-color: transparent;
+    transition: all .25s;
+}
+
+.btn-cancel:hover {
+    background-color: rgb(245, 245, 245);
+}

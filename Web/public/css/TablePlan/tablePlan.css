@@ -1,0 +1,14 @@
+.input-places {
+  width: 5%;
+  min-width: 3em;
+  text-align: center;
+}
+
+small label {
+  color: red !important;
+}
+
+th {
+  font-weight: bold;
+}
+

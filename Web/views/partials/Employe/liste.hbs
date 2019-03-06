@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{!-- add your javascript link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Employes/Employes.css">
+    <title>Liste des Employés</title>
+</head>
+<style>
+    td.hidden{
+    padding: 0;
+    
+.errorTxt{
+    font-size: 12px;
+    color: rgba(1000, 0, 0, .8);
+    display: inline;
+}
+}
+</style>
+
+<body>
+    {{!-- real page container --}}
+    <table id="table-content" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="6">
+                    <h3 style="float:left; margin-right: 10px;">Liste des employés</h3>
+                     <!-- Barre de Recherche-->
+                    <div class="input-group mb-3">
+                        <input type="text" id="rechercheEmployee" class="form-control" placeholder="Rechercher...">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button" id="btnRechercherEmployee">Rechercher</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center font-weight-bold">Nom</th>
+                <th class="text-center font-weight-bold">Prénom</th>
+                <th class="text-center font-weight-bold">Téléphone</th>
+                <th class="text-center font-weight-bold">Poste</th>
+                <th class="text-center font-weight-bold">Admin</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyEmp">
+            {{#each employes}}
+            <tr employeid="{{id}}" class="selectable">
+                {{!-- change all cell's name for your datas' name --}}
+                <td class="text-center">{{nom}}</td>
+                <td class="text-center">{{prenom}}</td>
+                <td class="text-center">{{telephone}}</td>
+                <td class="text-center">{{#if Poste}} {{Poste.nom}} {{else}} - {{/if}}</td>
+                <td class="text-center">{{#if admin}} <span>&#10003;</span> {{/if}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <div style="width: 100%;">
+                        <button id="btnAjouter" class="btn btn-primary">Ajouter</button>
+                        <button id="btnModifier" class="btn btn-primary selectAction" disabled>Modifier</button>
+                        <button id="btnVoirInfo" class="btn btn-primary selectAction" disabled>Visioner</button>
+                        <button id="btnDelete" class="btn btn-danger selectAction" disabled>Supprimer</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    {{! INFO }}
+    <div class="modal fade" id="modalVoirInfo" role="dialog" aria-labelledby="modalVoirInfoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalVoirInfoLabel"></h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Employé</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Téléphone</th>
+                            <td id="info-telephone"></td>
+                        </tr>
+                        <tr>
+                            <th>Courriel</th>
+                            <td id="info-courriel"></td>
+                        </tr>
+                    </table>
+
+                    <h4>Emploi</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Poste</th>
+                            <td id="info-poste"></td>
+                        </tr>
+                        <tr>
+                            <th>Taux horaire</th>
+                            <td id="info-tauxhoraire"></td>
+                        </tr>
+                    </table>
+
+                    <h4>Compte</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Nom d'usager</th>
+                            <td id="info-username"></td>
+                        </tr>
+                        <tr>
+                            <th>Administrateur</th>
+                            <td id="info-admin"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{! AJOUTER / Modifier }}
+    <div class="modal fade" id="modalActionEmp" role="dialog" aria-labelledby="modalActionEmpLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalActionEmpLabel"></h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formActionEmp" action="javascript:void(0)">
+                        <!-- Section Employé-->
+                        <h5>Employé</h5>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="nom">Nom: </label>
+                                <input type="text" class="form-control" name="nom" id="name">
+                                <small class="form-text"></small>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="prenom">Prénom: </label>
+                                <input type="text" class="form-control" name="prenom" id="prenom">
+                                <small class="form-text"></small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone: </label>
+                            <input type="text" class="form-control" name="telephone" id="phone">
+                            <small class="form-text"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="courriel">Courriel: </label>
+                            <input type="text" class="form-control" name="courriel" id="email">
+                            <small class="form-text"></small>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="tauxHoraire">Taux horaire: </label>
+                                <input type="text" class="form-control" name="tauxHoraire" id="tauxHoraire">
+                                <small class="form-text"></small>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="poste">Poste: </label>
+                                <select class="form-control" name="Poste_id" id="Poste_id">
+                                    <option value="0">N/A</option>
+                                    {{#each postes}}
+                                    <option value="{{id}}">{{nom}}</option>
+                                    {{/each}}
+                                </select>
+                                <small class="form-text"></small>
+                            </div>
+                        </div>
+
+                        <!-- Section Compte -->
+                        <h5>Compte</h5>
+                        <div class="form-group">
+                            <label for="username">Nom d'usager: </label>
+                            <input type="text" class="form-control" name="username" id="username">
+                            <small class="form-text"></small>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="password">Mot de passe: </label> <br>
+                                <input type="password" class="form-control" name="password" id="password">
+                                <small class="form-text"></small>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password_confirm">Confirmation du mot de passe: </label>
+                                <input type="password" class="form-control" name="password_confirm" id="password_confirm">
+                                <small class="form-text"></small>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: 3.5%;">
+                            <input type="checkbox" class="form-check-input" value="true" name="admin" id="admin">
+                            <label class="form-check-label" for="admin"> Administrateur </label>
+                            <small class="form-text"></small>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="submit" form="formActionEmp" class="btn btn-primary" id="btnActionEmploye">Action</button>
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{! SUPPRIMER }}
+    <div class="modal fade" id="modalSupprimerEmploye" role="dialog" aria-labelledby="modalSupprimerEmployeLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalSupprimerEmployeLabel">Supprimer l'employé</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="deleteConfirmationQuestion"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnDelEmp" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

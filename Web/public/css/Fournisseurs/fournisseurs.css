@@ -1,0 +1,25 @@
+.input-prix {
+    width: 4em;
+    text-align: center;
+}
+
+td .form-control {
+    float: right;
+    width: 20em;
+
+}
+
+td .input-group {
+    float: right;
+    width: 20em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+table {
+    box-shadow: 1em 2em black,
+}
+

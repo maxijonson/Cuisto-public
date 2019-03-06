@@ -1,0 +1,48 @@
+{
+  "name": "cuisto-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "export CUISTO_ENV=mocha-test || SET \"CUISTO_ENV=mocha-test\" && mocha server/test/**/*.test.js",
+    "testing": "export CUISTO_ENV=local-test || SET \"CUISTO_ENV=local-test\" && npm start",
+    "testing-cleardb": "export CUISTO_ENV=local-test-cleardb || SET \"CUISTO_ENV=local-test-cleardb\" && npm start",
+    "start-cleardb": "export CUISTO_ENV=local-development-cleardb || SET \"CUISTO_ENV=local-development-cleardb\" && npm start"
+  },
+  "engines": {
+    "node": "10.5.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "cookie-signature": "^1.1.0",
+    "element-ui": "^2.4.10",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-mysql-session": "^2.0.1",
+    "express-session": "^1.15.6",
+    "jquery-validation": "^1.18.0",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.4",
+    "node-fetch": "^2.3.0",
+    "nodemailer": "^4.7.0",
+    "popper.js": "^1.14.5",
+    "select2": "^4.0.6-rc.1",
+    "sequelize": "^4.41.2",
+    "validator": "^10.9.0"
+  },
+  "devDependencies": {
+    "expect": "^23.6.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
+  }
+}

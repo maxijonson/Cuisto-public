@@ -1,0 +1,24 @@
+#divSignup {
+    text-align: center;
+}
+
+.button {
+    background-color: #1686d9;
+    border: 2px solid white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 10px 28px;
+    color: white;
+    margin-top: 10px;
+    display: inline-block;
+    
+}
+hover.button{
+    background-color: white;
+    color: #1686d9;
+    border: 2px solid #1686d9;
+}
+
+.error {
+    color: red;
+}

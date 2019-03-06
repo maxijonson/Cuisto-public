@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{!-- add your CSS link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Fournisseurs/fournisseurs.css">
+    <title>Commande {{commande.date}}</title>
+    {{!-- add your javascript link --}}
+    <script src="/js/Commande/commande.js"></script>
+</head>
+
+<body>
+    <table id="commande" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="4" style="overflow: hidden;">
+                    <h3 id="commande" style="float: left; margin-right: 10px;" id_commande="{{commande.id}}">Commande pour {{commande.Fournisseur.nom}} - {{commande.date}}</h3>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">Article</th>
+                <th class="text-center">Prix unitaire</th>
+                <th class="text-center">Quantité</th>
+                <th class="text-center">Prix total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each commande.Articles}}
+            <tr id="{{id}}" class="article active">
+                <td id="nom">{{nom}}</td>
+                <td id="prix" value="{{CommandeArticle.prix}}">{{CommandeArticle.prix}}$</td>
+                <td id="quantite" value="{{CommandeArticle.quantite}}">{{CommandeArticle.quantite}}</td>
+                <td id="totalArticle"></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <div style="width: 100%;">
+                        <button id="btnRetourCommandes" class="btn btn-secondary">Retour</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

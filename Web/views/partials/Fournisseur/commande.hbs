@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Commande {{fournisseur.nom}}</title>
+    {{!-- add your CSS link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Fournisseurs/fournisseurs.css">
+
+    {{!-- add your javascript link --}}
+    <script src="/js/Fournisseur/commander.js"></script>
+</head>
+
+<body>
+    <table id="fournisseurArticle" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="4" style="overflow: hidden;">
+                    <h3 id="fournisseur" style="float: left; margin-right: 10px;" id_fournisseur="{{fournisseur.id}}">Liste des produits de {{fournisseur.nom}}</h3>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">Article</th>
+                <th class="text-center">Prix unitaire</th>
+                <th class="text-center">Quantité</th>
+                <th class="text-center">Prix total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each fournisseur.Articles}}
+            <tr id="{{id}}" class="fournisseurArticle active">
+                <td id="nom">{{nom}}</td>
+                <td id="prix" value="{{ListeFournisseur.prix}}">{{ListeFournisseur.prix}}$</td>
+                <td><input class="input-prix" type="number" step="1" min="0" value="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 13"> {{unite}}</td>
+                <td id="totalArticle"><span class="totalArticlePrix font-weight-bold">0.00</span>$</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <div style="width: 100%;">
+                        <button id="btnCommander" class="btn btn-primary">Placer la commande</button>
+                        <button id="btnRetourFournisseur" class="btn btn-secondary">Retour aux fournisseurs</button>
+                        <div class="float-right lead">
+                            Coût total: <span class="font-weight-bold" id="prixTotal">0</span>$
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

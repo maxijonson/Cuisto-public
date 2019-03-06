@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_ListeCommandes"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:minWidth="150dp">
+
+
+    <TextView
+        android:id="@+id/Label_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Commande No:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="9dp"
+        android:layout_toEndOf="@+id/Label_id"
+        android:textSize="18sp"
+        tools:text="184" />
+
+    <TextView
+        android:id="@+id/Label_Salle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Id"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Salle:"
+        android:textColor="@color/black"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/tv_Salle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Id"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/Label_Salle"
+        tools:text="Main Floor"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/Label_Table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Salle"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Numéro de table:"
+        android:textColor="@color/black"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/tv_Table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Salle"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/Label_Table"
+        tools:text="1"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/Label_client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Table"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Numéro du client:"
+        android:textColor="@color/black"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/tv_Client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Table"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/Label_client"
+        tools:text="1"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/Label_Employe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Client"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Serveuse:"
+        android:textColor="@color/black"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/tv_Employe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Client"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@+id/Label_Employe"
+        tools:text="Rachelle Lemieux"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/Label_Items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Employe"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Items:"
+        android:textColor="@color/colorBottomNavigationPrimaryDark" />
+
+    <ListView
+        android:id="@+id/lv_items"
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Label_Items"
+        android:dividerHeight="0dp" />
+
+</RelativeLayout>

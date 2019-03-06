@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inventaire</title>
+    {{!-- add your CSS link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Inventaire/inventaire.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+    {{!-- add your javascript link --}}
+    <script src="/js/Inventaire/inventaire.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+</head>
+
+<body>
+
+    <table id="inventaire" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="3" style="overflow: hidden;">
+                    <h3 style="float: left; margin-right: 10px;">Inventaire</h3>
+                    <!-- Barre de Recherche -->
+                    <div class="input-group mb-3">
+                        <input type="text" id="rechercheInventaire" class="form-control" placeholder="Rechercher...">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button" id="btnRechercherInventaire">Rechercher</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center fixed_header">Nom</th>
+                <th class="text-center fixed_header">Stock</th>
+                <th class="text-center fixed_header">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data.articles}}
+            <tr id="{{id}}" class="selectable">
+                <td id="nom">{{nom}}</td>
+                <td id="quantite"><b>{{quantite}}</b> <i>{{unite}}</i></td>
+                <td id="type">{{typeArticle}}</td>
+                <td id="fournisseurs" value="{{Fournisseurs.id}}" hidden></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <div style="width: 100%;">
+                        <button id="btnAjouterArticle" class="btn btn-primary">Ajouter</button>
+                        <button id="btnModifierArticle" class="btn btn-primary selectAction" disabled>Modifier</button>
+                        <button id="btnDeleteArticle" class="btn btn-danger selectAction" disabled>Supprimer</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+<!-- Dialog Ajouter/Modifier -->
+<div class="modal fade" id="articleModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="titreDialog">Ajouter un article</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formcree" style="text-align:left" action="javascript:void(0)">
+                    <div class="form-group">
+                        <label for="nom">Nom:</label>
+                        <input type="text" class="form-control" value="{{data.nom}}" id="nomModal" name="nom">
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantite">Quantité:</label>
+                        <input type="number" class="form-control" value="{{data.quantite}}" id="quantiteModal" name="quantite">
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="unite">Unité:</label>
+                        <input class="form-control" list="uniteArticleList" id="uniteModal" value="{{data.unite}}" name="unite">
+                        <small class="form-text"></small>
+                        <datalist id="uniteArticleList">
+                            {{#each unites}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <input class="form-control" list="typeArticleList" id="typeModal" value="{{data.typeArticle}}"
+                            name="typeArticle">
+                        <small class="form-text"></small>
+                        <datalist id="typeArticleList">
+                            {{#each types}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="fournisseurs">Fournisseur(s):</label>
+                        <select style="width:100%;" class="form-control" id="fournisseursModal" multiple></select>
+                    </div>
+                    <input type="hidden" id="articleId">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="formcree" class="btn btn-primary" id="confirmer" value="Ajouter">Ajouter</button>
+                <button type="button" class="btn btn-cancel" id="btnRetour" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirmer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Supprimer un article</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous certain de vouloir supprimer cet article?
+            </div>
+            <div class="modal-footer" style="float:left;">
+                <button type="button" class="btn btn-danger" id="confirmerDelete">Supprimer</button>
+                <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
+<!--  -->

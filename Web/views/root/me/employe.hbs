@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <meta charset='utf-8' name="viewport" content="width-device-width, initial-scale=1">
+
+    {{!-- css --}}
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    {{!-- add your css' link --}}
+
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/Login/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/me/me.css">
+    {{!-- js --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    {{!-- add your javascript link --}}
+    <script src="/js/me/employe.js"></script>
+</head>
+
+<body>
+
+    <div class="content">
+        {{!-- navigation --}}
+        {{> navbar}}
+
+        <div class="container card shadow col-md-6" style="margin-top: 1%; margin-bottom: 1%">
+            <div class="card-body">
+                <h1 class="card-title" id="EmpName">{{capitalize user.prenom user.nom}}</h1>
+                <h4 class="card-subtitle mb-2 text-muted">
+                    {{#ifEquals user.type "manager"}}
+                    Gérant
+                    {{else}}
+                    Employé
+                    {{/ifEquals}}
+                </h4>
+                <form method="POST" id="formEdit">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nom">Nom </label>
+                            <input type="text" class="form-control" name="nom" id="name" value="{{user.nom}}">
+                            <small class="form-text"></small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="prenom">Prénom </label>
+                            <input type="text" class="form-control" name="prenom" id="prenom" value="{{user.prenom}}">
+                            <small class="form-text"></small>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="telephone">No. de Téléphone: </label>
+                            <input type="text" class="form-control" name="telephone" value="{{user.telephone}}" id="telephone">
+                            <small class="form-text"></small>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="courriel">Courriel </label>
+                            <input type="text" class="form-control" name="courriel" value="{{user.courriel}}" id="courriel">
+                            <small class="form-text"></small>
+                        </div>
+                    </div>
+
+                    {{#ifEquals user.type "manager"}}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="Poste_id">Poste</label>
+                            <select class="form-control" name="Poste_id">
+                                <option value="0">N/A</option>
+                                {{#each ../postes}}
+                                <option value="{{id}}" {{#ifEquals ../../user.Poste.id id}} selected {{/ifEquals}}>{{nom}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="username">Nom d'usager</label>
+                            <input name="username" type="text" class="form-control" id="username" placeholder="Nom d'usager"
+                                value="{{../user.username}}" />
+                            <small class="form-text"></small>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="form-group">
+                        <label for="username">Nom d'usager</label>
+                        <input name="username" type="text" class="form-control" id="username" placeholder="Nom d'usager"
+                            value="{{../user.username}}">
+                        <small class="form-text"></small>
+                    </div>
+                    {{/ifEquals}}
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="new_password">Nouveau mot de passe</label>
+                            <input name="new_password" type="password" class="form-control" id="new_password"
+                                placeholder="Nouveau mot de passe">
+                        </div>
+                        <div class="form-group  col-md-6">
+
+                            <label for="new_password_confirm">Confirmer mot de passe</label>
+                            <input name="new_password_confirm" type="password" class="form-control" id="new_password_confirm"
+                                placeholder="Confirmer nouveau mot de passe">
+                        </div>
+                    </div>
+
+
+
+                    <div class="dropdown-divider mb-4"></div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                    {{#ifEquals user.type "manager"}}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                        Supprimer le compte
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Supprimer le compte</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Êtes-vous sûr de vouloir supprimer votre compte? Cette action ne peut pas être
+                                    annulée
+                                    une fois qu'elle est faite.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" id="DeleteOrg">Supprimer</button>
+                                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/ifEquals}}
+                </form>
+            </div>
+        </div>
+
+        <div class="container card shadow col-md-6" style="margin-top: 1%; margin-bottom: 1%">
+            <div class="card-body">
+                <h1 class="card-title">Téléchargez l'application mobile</h1>
+                <h6 class="card-subtitle text-muted mb-3">Téléchargez cette application sur votre tablette Android</h6>
+                <a class="btn btn-primary text-white col-12" href="/downloads/Cuisto.apk">Télécharger Cuisto</a>
+            </div>
+        </div>
+    </div>
+
+    {{> footer}}
+</body>
+
+</html>

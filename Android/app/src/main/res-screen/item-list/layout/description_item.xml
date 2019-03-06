@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_Description"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border">
+
+
+    <TextView
+        android:id="@+id/Label_Nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Nom de l'item:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_NomItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Label_Nom"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        tools:text="Burger" />
+
+    <TextView
+        android:id="@+id/Label_Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_NomItem"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Description de l'item:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_DescriptionItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Label_Description"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        tools:text="Allo le burger yer vrm bon: ceci est un exemple fyi" />
+
+    <TextView
+        android:id="@+id/Label_Prix"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_DescriptionItem"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Prix:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_PrixItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_DescriptionItem"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/Label_Prix"
+        tools:text="20$" />
+
+    <TextView
+        android:id="@+id/Label_Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_DescriptionItem"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/tv_PrixItem"
+        android:text="Type d'item:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_TypeItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_DescriptionItem"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/Label_Type"
+        tools:text="Le type de l'item ici" />
+
+    <TextView
+        android:id="@+id/Label_Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_TypeItem"
+        android:layout_marginTop="48dp"
+        android:text="Menu que l'item fait partie:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/Label_MenuNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Label_Menu"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Nom du Menu:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_NomMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Label_MenuNom"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        tools:text="Nom du menu ici" />
+
+    <TextView
+        android:id="@+id/Label_TypeMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_NomMenu"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Type de menu:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_TypeMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Label_TypeMenu"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        tools:text="Type du menu ici" />
+</RelativeLayout>

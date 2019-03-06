@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{user.nom}} - Postes</title>
+    <meta charset='utf-8' name="viewport" content="width-device-width, initial-scale=1">
+    {{!-- css --}}
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/Poste/list.css">
+    {{!-- add your css' link --}}
+    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    {{!-- js --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    {{!-- add your javascript link --}}
+    <script src="../js/Poste/liste.js"></script>
+</head>
+
+<body>
+    <div class="content">
+            {{!-- navigation --}}
+            {{> navbar}}
+        <div class="container-fluid">
+
+            <div class="container-fluid p-4">
+                {{!-- real page container --}}
+                <div class="row">
+                    <div class="col-12">
+                        <span class="h1">Liste des postes</span>
+                        <button type="button" class="btn btn-secondary" style="float: right; margin: 0 1%" id="listeResto">Voir
+                            les restaurants</button>
+                        <button type="button" class="btn btn-secondary" style="float: right" id="ajouterPoste">Ajouter
+                            un poste</button>
+                    </div>
+                </div>
+                <div class="row" id="postes">
+                    {{#each postes}}
+                    <div class="col-3 posteContainer hidden">
+                        <div class="card mb-3 mt-3 poste" posteid="{{id}}">
+                            <h4 class="card-title card-header text-white text-center">{{nom}}</h4>
+                            <div class="card-body">
+                                <h6 class="text-secondary">Nombre d'employés</h6>
+                                <p class="nbEmployes">{{nbEmployes}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div id="actions" class="hidden bg-light">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-2 text-center">
+                            <button id="edit" class="btn btn-primary">Modifier</button>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button id="delete" class="btn btn-danger">Supprimer</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- MODALS --}}
+        {{! Edit }}
+        <div class="modal fade" id="modalAction" tabindex="-1" role="dialog" aria-labelledby="modalActionLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalActionLabel"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formActionPoste" action="javascript:void(0)">
+                            <div class="form-group">
+                                <label for="nom">Nom: </label>
+                                <input type="text" class="form-control" name="nom" id="name">
+                                <small class="form-text"></small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="formActionPoste" class="btn btn-primary" id="btnActionPoste">Action</button>
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal" id="btnCancel">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{! Delete }}
+        <div class="modal fade" id="modalSupprimer" tabindex="-1" role="dialog" aria-labelledby="modalSupprimerLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalSupprimerLabel"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="btnDeletePoste">Supprimer</button>
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> footer}}
+</body>
+
+</html>

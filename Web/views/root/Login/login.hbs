@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cuisto - Connexion</title>
+    <meta charset='utf-8' name="viewport" content="width-device-width, initial-scale=1">
+
+    {{!-- css --}}
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    {{!-- add your css' link --}}
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/Login/login.css">
+    {{!-- js --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    {{!-- add your javascript link --}}
+    <script src="/js/login/login.js"></script>
+</head>
+
+<body>
+
+    <div class="content">
+        {{!-- navigation --}}
+        {{> navbar}}
+        <div class="container card shadow" style="margin-top: 1%; margin-bottom: 1%">
+            <div class="card-body">
+                <h1 class="card-title">Connexion</h1>
+                <form id="formLogin">
+                    <div class="form-group">
+                        <label for="username">Identifiant</label>
+                        <input name="username" type="text" class="form-control" id="username" placeholder="Nom d'usager / Courriel">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    </div>
+                    <div class="form-group">
+                        <input name="connection" value="preserve" type="checkbox" id="stayconnected"> <label for="stayconnected">Rester
+                            connecté</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Connexion</button>
+                    <a class="btn btn-secondary" href="/signup">Créer un compte</a>
+                </form>
+                <div class="mt-2">
+                    <a id="forgot" class="text-primary" style="text-decoration: none" href="javascript:void(0)"
+                        data-toggle="modal" data-target="#modalForgot">Mot de passe oublié?</a>
+                </div>
+            </div>
+        </div>
+
+        {{! FORGOT PASSWORD MODAL }}
+        <div class="modal fade" id="modalForgot" tabindex="-1" role="dialog" aria-labelledby="modalForgotLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalForgotLabel">Réinitialiser le mot de passe</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Si vous avez oublier votre mot de passe, il est possible de le réinitialiser. Entrez votre
+                            identifiant ci-dessous pour commencer le processus.</p>
+                        <form action="javascript:void(0)" id="formForgot">
+                            <div class="form-group">
+                                <label for="usernameForgot">Identifiant: </label>
+                                <input type="text" class="form-control" id="usernameForgot" name="username" placeholder="Nom d'usager / Courriel">
+                                <small class="form-text"></small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="formForgot" class="btn btn-primary" id="btnSendForgot">Envoyer</button>
+                        <button type="button"  class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> footer}}
+</body>
+
+</html>

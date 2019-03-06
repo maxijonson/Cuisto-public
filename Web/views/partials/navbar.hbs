@@ -1,0 +1,48 @@
+<script src="/js/main.js"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top container-fluid shadow font-weight-bold mb-3 mr-0" id="navbar">
+    <a class="navbar-brand p-0 pl-3" href="/">
+        <img src="/logo.png" alt="Cuisto" height="48" class="d-inline-block align-top" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+                {{#if user}}
+                <li class="nav-item">
+                    <a href="/me" class="nav-link">
+                        {{user.prenom}} {{user.nom}}
+                    </a>
+                </li>
+                {{#ifEquals user.type "organisation"}}
+                <li class="nav-item">
+                    <a href="/restaurant/liste" class="nav-link">
+                        Organisation
+                    </a>
+                </li>
+                {{/ifEquals}}
+                {{#ifEquals user.type "manager"}}
+                <li class="nav-item">
+                    <a href="/restaurant/panel" class="nav-link">
+                        {{../user.Restaurant.nom}}
+                    </a>
+                </li>
+                {{/ifEquals}}
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">
+                        Déconnexion
+                    </a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">
+                        Connexion
+                    </a>
+                </li>
+                {{/if}}
+        </ul>
+    </div>
+</nav>
+<div id="alert_placeholder"></div>

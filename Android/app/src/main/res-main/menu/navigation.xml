@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_prise_commande"
+        android:icon="@drawable/commande_24"
+        android:title="@string/prise_de_commande"
+        />
+    <item
+        android:id="@+id/navigation_menu"
+        android:icon="@drawable/menu_24"
+        android:title="@string/menu"
+        />
+    <item
+        android:id="@+id/navigation_en_cours"
+        android:icon="@drawable/en_cours_24"
+        android:title="@string/commande_en_cours"/>
+
+    <item
+        android:id="@+id/navigation_prete"
+        android:icon="@drawable/prete_24"
+        android:title="@string/commande_prete"/>
+</menu>

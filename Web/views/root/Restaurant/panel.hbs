@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <meta charset='utf-8' name="viewport">
+    {{!-- css --}}
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    {{!-- add your css' link --}}
+    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/modules/select2/dist/css/select2.min.css">
+    {{!-- js --}}
+    <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <script src="/js/Restaurant/panel.js"></script>
+    <script src="/js/Employes/employes.js"></script>
+    <script src="/modules/select2/dist/js/select2.min.js"></script>
+    {{!-- add your javascript link --}}
+
+</head>
+
+<body>
+    <div class="content">
+            {{!-- navigation --}}
+            {{> navbar}}
+        <div class="container-fluid">
+            <div class="row mainRemoveMarginRight">
+                <div class="col-2 pl-4 pt-3">
+                    <div class="row" id="historyControl">
+                        <div class="col-2">
+                            <i class="arrow left historyAction float-left" cuisto-history="prev" cuisto-disabled="true"></i>
+                        </div>
+                        <div class="col-8 text-center historyActionName hidden" id="historyName"></div>
+                        <div class="col-2">
+                            <i class="arrow right historyAction float-right" cuisto-history="frwd" cuisto-disabled="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8"></div>
+                <div class="col-1 pt-3">
+                    Animations
+                </div>
+                <div class="col-1 pt-3">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="animation-switch" checked>
+                        <label class="onoffswitch-label" for="animation-switch"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mainRemoveMarginRight">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5">
+                    {{>left-menu}}
+                </div>
+                {{!-- real page container --}}
+                <div id="panel" class="row col-lg-10 col-md-9 col-sm-8 col-xs-7 " style="margin-top: 15px;">
+                    <div id="new">
+                        <div class="my-auto text-muted hidden" id="panelDefault">
+                            <h3>
+                                <div class="mr-5 ml-5" id="panelDefaultArrow">&larr;</div>Veuillez choisir un menu de
+                                gestion
+                            </h3>
+                        </div>
+                    </div>
+                    <div id="current">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> footer}}
+</body>
+
+</html>

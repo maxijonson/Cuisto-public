@@ -1,0 +1,26 @@
+
+td .input-group {
+    float: right;
+    width: 20em;
+}
+.input-quantite{
+    width: 4em;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+small label {
+    color: red !important;
+}
+
+th {
+    font-weight: bold;
+}
+
+option:selected {
+    background-color: lightskyblue !important;
+}

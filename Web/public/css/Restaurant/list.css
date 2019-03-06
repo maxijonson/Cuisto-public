@@ -1,0 +1,65 @@
+@keyframes newAnimate {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.restaurant {
+    transition: all .25s;
+    cursor: pointer;
+}
+
+.restoContainer {
+    transition: all .5s;
+}
+
+.new {
+    animation: newAnimate .5s ease;
+}
+
+.deleted {
+    transform: scale(0);
+    opacity: 0;
+    margin-left: -33.333333%;
+}
+
+.errorTxt {
+    color: red;
+}
+
+#actions {
+    z-index: 10;
+    transition: all .5s;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: .5%;
+    box-shadow: 0 -.2em 1em grey;
+}
+
+#actions.hidden {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.restaurant .card-header {
+    background-color: #4d91d4
+}
+
+.restoContainer.hidden {
+    opacity: 0;
+    transform: translateX(20%);
+}
+
+.modal table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1em;
+}

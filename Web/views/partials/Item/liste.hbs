@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Menu</title>
+    {{!-- add your CSS link --}}
+    <link rel="stylesheet" type="text/css" href="/css/Item/item.css">
+
+    {{!-- add your javascript link --}}
+    <script src="/js/Item/item.js"></script>
+</head>
+
+<body>
+    <table id="item" class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="4" style="overflow: hidden;">
+                    <h3 style="float: left; margin-right: 10px;">Menu</h3>
+                    <div class="input-group mb-3">
+                        <input type="text" id="rechercheMenu" class="form-control" placeholder="Rechercher...">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button" id="btnRechercherMenu">Rechercher</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">Nom</th>
+                <th class="text-center">Prix</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Items.items}}
+            <tr id="{{id}}" class="selectable">
+                <td>{{nom}}</td>
+                <td>{{prix}}$</td>
+                <td>{{typeItem}}</td>
+                <td>{{description}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <div style="width: 100%;">
+                        <button id="btnAjouterItem" class="btn btn-primary">Ajouter</button>
+                        <button id="btnModifierItem" class="btn btn-primary selectAction" disabled>Modifier</button>
+                        <button id="btnSupprimerItem" class="btn btn-danger selectAction" disabled>Supprimer</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+<!-- Dialog Ajouter/Modifier -->
+<div class="modal fade" id="itemModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="titreDialog"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formItem" style="text-align:left" action="javascript:void(0)">
+                    <div class="form-group">
+                        <label for="nomModal">Nom: </label>
+                        <input type="text" class="form-control" value="" id="nomModal" name="nom">
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="prixModal">Prix: </label>
+                        <input type="number" step="0.01" class="form-control" value="" id="prixModal" name="prix">
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionModal">Description: </label>
+                        <textarea type="text" class="form-control" value="" id="descriptionModal" name="description"></textarea>
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="typeModal">Type: </label>
+                        <input type="text" class="form-control" value="" id="typeModal" name="type">
+                        <small class="form-text"></small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                    <button type="submit" form="formItem" class="btn btn-primary" id="confirmer" value="Ajouter">Ajouter</button>
+                    <button type="button" class="btn btn-cancel" id="btnRetour" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirmer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Supprimer l'item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous certain de vouloir supprimer cet item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="confirmerDelete">Supprimer</button>
+                <button type="button" class="btn btn-cancel" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>

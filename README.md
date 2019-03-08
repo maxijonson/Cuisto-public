@@ -59,4 +59,4 @@ Les commandes prises par les serveurs seront envoyés directement en cuisine pou
 
 # Version Publique
 
-Cette version est une version republiée et adapté pour être disponible publiquement, la version originale ayant des fichiers sensibles qui avaient été comités. 
+Cette version est une version republiée et adapté pour être disponible publiquement, la version originale ayant des fichiers sensibles qui avaient été comités.
